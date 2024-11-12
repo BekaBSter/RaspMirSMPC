@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6c5fd228-aa13-4cc2-8e25-8efa2c8f7a79" name="Changes" comment="Инициализация файлов проекта" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2nrpT1dxPugEIbDBMcD9mARJgOh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Desktop/Telebot New",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Telebot New" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\Desktop\Telebot New\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6c5fd228-aa13-4cc2-8e25-8efa2c8f7a79" name="Changes" comment="" />
+      <created>1729741052433</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729741052433</updated>
+      <workItem from="1729741054641" duration="26548000" />
+      <workItem from="1729791021349" duration="4384000" />
+      <workItem from="1729795605785" duration="72000" />
+      <workItem from="1729838505087" duration="1844000" />
+      <workItem from="1729843100125" duration="184000" />
+      <workItem from="1729843422696" duration="11425000" />
+      <workItem from="1729876389564" duration="46000" />
+      <workItem from="1730105218372" duration="474000" />
+      <workItem from="1730105814907" duration="1623000" />
+      <workItem from="1730108995119" duration="717000" />
+      <workItem from="1730110916694" duration="23000" />
+      <workItem from="1730111058677" duration="222000" />
+      <workItem from="1730111472462" duration="1847000" />
+      <workItem from="1730113997259" duration="3792000" />
+      <workItem from="1730117890071" duration="1264000" />
+      <workItem from="1730119823870" duration="1000" />
+      <workItem from="1730119884651" duration="1000" />
+      <workItem from="1730120018530" duration="666000" />
+      <workItem from="1730187905408" duration="2076000" />
+      <workItem from="1730196310538" duration="1523000" />
+      <workItem from="1730266653281" duration="5769000" />
+      <workItem from="1730459797521" duration="366000" />
+      <workItem from="1730867340134" duration="102000" />
+      <workItem from="1730877272890" duration="316000" />
+      <workItem from="1730878283279" duration="3008000" />
+      <workItem from="1731058376127" duration="3082000" />
+      <workItem from="1731122993477" duration="3806000" />
+      <workItem from="1731132700043" duration="2519000" />
+      <workItem from="1731138327796" duration="705000" />
+      <workItem from="1731311980191" duration="1861000" />
+      <workItem from="1731313866974" duration="6132000" />
+      <workItem from="1731320517846" duration="899000" />
+      <workItem from="1731321529169" duration="11000" />
+      <workItem from="1731325016513" duration="311000" />
+      <workItem from="1731325344441" duration="31000" />
+      <workItem from="1731325382578" duration="899000" />
+      <workItem from="1731326589263" duration="191000" />
+      <workItem from="1731389606432" duration="71000" />
+      <workItem from="1731389688469" duration="107000" />
+      <workItem from="1731390058819" duration="227000" />
+    </task>
+    <task id="LOCAL-00001" summary="Инициализация файлов проекта">
+      <created>1731325067832</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731325067832</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+      <path value="$PROJECT_DIR$/../RaspMirSMPC" />
+      <path value="$PROJECT_DIR$/master" />
+    </ignored-roots>
+    <MESSAGE value="Инициализация файлов проекта" />
+    <option name="LAST_COMMIT_MESSAGE" value="Инициализация файлов проекта" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Telebot_New$main.coverage" NAME="main Coverage Results" MODIFIED="1731314554029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Telebot_New$test.coverage" NAME="test Coverage Results" MODIFIED="1731319881369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
