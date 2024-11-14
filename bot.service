@@ -1,0 +1,8 @@
+[Unit]
+Description=Telegram Bot RaspMirSMPC
+After=network.target
+[Service]
+Type=simple
+ExecStart=/home/user/RaspMirSMPC/start.sh
+[Install]
+WantedBy=multi-user.target
