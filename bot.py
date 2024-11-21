@@ -5,7 +5,7 @@ from telebot.asyncio_helper import ApiTelegramException
 import database
 import http_requests
 
-bot = AsyncTeleBot('7660590004:AAEmvvJmNJwPBLBq_y7ZVtKpCmDZMGjiPtc')
+bot = AsyncTeleBot('7660590004:AAGt_Pqj6GP4vYXmGZd-H6g5wPTFxBjK_Tc')
 
 choices = {"g": "Группа", "t": "Преподаватель", "a": "Аудитория"}
 options = ["Смена выбора", "Удалить синхронизацию", "Выход"]

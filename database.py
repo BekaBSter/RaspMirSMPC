@@ -10,7 +10,7 @@ def connect():
         conn = mariadb.connect(
             user="root",
             password="P@ssw0rd",
-            host="10.12.50.50",
+            host="10.12.50.51",
             port=3306,
             database="bot"
         )
