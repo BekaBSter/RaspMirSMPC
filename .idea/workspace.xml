@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c5fd228-aa13-4cc2-8e25-8efa2c8f7a79" name="Changes" comment="Инициализация файлов проекта" />
+    <list default="true" id="6c5fd228-aa13-4cc2-8e25-8efa2c8f7a79" name="Changes" comment="Инициализация файлов проекта">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +34,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Desktop/Telebot New",
+    "last_opened_file_path": "D:/Desktop/RaspMirSMPC",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   },
   "keyToStringList": {
@@ -113,6 +115,7 @@
       <workItem from="1731389606432" duration="71000" />
       <workItem from="1731389688469" duration="107000" />
       <workItem from="1731390058819" duration="227000" />
+      <workItem from="1732181683441" duration="1230000" />
     </task>
     <task id="LOCAL-00001" summary="Инициализация файлов проекта">
       <created>1731325067832</created>
@@ -133,15 +136,9 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="FILTERS">
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
                 <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="master" />
-                      </list>
-                    </value>
-                  </entry>
+                  <entry key="Show.Git.Branches" value="true" />
                 </map>
               </option>
             </State>
@@ -168,7 +165,7 @@
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
-      <path value="$PROJECT_DIR$/../RaspMirSMPC" />
+      <path value="$PROJECT_DIR$" />
       <path value="$PROJECT_DIR$/master" />
     </ignored-roots>
     <MESSAGE value="Инициализация файлов проекта" />
