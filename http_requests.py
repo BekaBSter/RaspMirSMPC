@@ -100,7 +100,7 @@ def create_list_values(choice_type):
 def create_content(user_choice):
     choice_type, choice_name = user_choice.split("_")
     choice_id = search_id_in_name(choice_type, choice_name)
-    coding = '<meta charset="utf-8">'
+    coding = '''<html  lang='ru' dir='ltr'>'''
     if choice_id >= 0:
         try:
             url = lists_values[choice_type][choice_id][1]
