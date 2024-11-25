@@ -1,2 +1,3 @@
 #!/bin/bash
-python main.py
+cd /root/RaspMirSMPC/
+python3 -u main.py > log.txt

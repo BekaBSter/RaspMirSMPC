@@ -100,6 +100,7 @@ def create_list_values(choice_type):
 def create_content(user_choice):
     choice_type, choice_name = user_choice.split("_")
     choice_id = search_id_in_name(choice_type, choice_name)
+    coding = '<meta charset="utf-8">'
     if choice_id >= 0:
         try:
             url = lists_values[choice_type][choice_id][1]
@@ -110,7 +111,7 @@ def create_content(user_choice):
             soup = 1
         if soup != 1:
             content = format_content(soup.find("table", class_="inf"))
-            content = choice_name + "\n" + content
+            content = coding + "\n" + choice_name + "\n" + content
             return content
         else:
             return 1
