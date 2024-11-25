@@ -9,8 +9,8 @@ def connect():
     try:
         conn = mariadb.connect(
             user="root",
-            password="P@ssw0rd",
-            host="10.12.50.51",
+            password="Fuck1234",
+            host="localhost",
             port=3306,
             database="bot"
         )
