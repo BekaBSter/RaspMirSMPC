@@ -2,6 +2,7 @@ import asyncio
 import requests
 from bs4 import BeautifulSoup as BS
 
+from html2screen import html_to_screenshot
 import bot
 import database
 
@@ -55,6 +56,13 @@ async def check_content():
                         os.remove(file_name_differences)
                     except FileNotFoundError:
                         print(f"Нет файла у пользователя {chat_id}.\nРабота продолжается")
+                    png_dif_name = f"./files/{chat_id}_dif.png"
+                    await html_to_screenshot(
+                        file_name_differences,
+                        png_dif_name,
+                        "./chromedriver-linux64/chromedriver",
+                        "./chromium-linux64/chromium-browser"
+                    )
                     with open(file_name_differences, "w") as file_differences:
                         file_differences.write(check_differences_content(last_content, new_content))
                     with open(file_name_last, "w") as file_last:
@@ -62,14 +70,14 @@ async def check_content():
                     with open(file_name_new, "w") as file_new:
                         file_new.write(new_content)
                     try:
-                        await bot.send_message(chat_id, user_choice, file_name_last, file_name_differences, new_content)
+                        await bot.send_message(chat_id, user_choice, file_name_last, png_dif_name, new_content)
                     except():
                         err = f"Пользователю {chat_id} не было выслано новое расписание по какой-то " \
                               f"ошибке.\nРабота продолжается"
                         print(err)
                         # await bot.send_admin_message(err)
             # print("Проверка пользователей окончена.")
-        await asyncio.sleep(120)
+        await asyncio.sleep(60)
 
 
 def create_soup(url):
@@ -100,7 +108,7 @@ def create_list_values(choice_type):
 def create_content(user_choice):
     choice_type, choice_name = user_choice.split("_")
     choice_id = search_id_in_name(choice_type, choice_name)
-    coding = '<meta charset="utf-8">'
+    coding = '''<html  lang='ru' dir='ltr'>'''
     if choice_id >= 0:
         try:
             url = lists_values[choice_type][choice_id][1]
