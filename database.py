@@ -4,17 +4,17 @@ import mariadb
 
 import http_requests
 
-import DATA
+import Settings
 
 
 def connect():
     try:
         conn = mariadb.connect(
-            user=DATA.db_user,
-            password=DATA.db_password,
-            host=DATA.db_host,
-            port=DATA.db_port,
-            database=DATA.db_database
+            user=Settings.db_user,
+            password=Settings.db_password,
+            host=Settings.db_host,
+            port=Settings.db_port,
+            database=Settings.db_database
         )
         cur = conn.cursor()
     except mariadb.Error as e:
@@ -95,6 +95,25 @@ def all_users():
         cur.execute("SELECT chat_id, user_choice FROM users")
         users = cur.fetchall()
         cur.execute("SELECT content FROM users_content")
+        try:
+            contents = cur.fetchall()
+        except IndexError:
+            return 1
+        users_contents = []
+        for i in range(0, len(users)):
+            users_contents.append([users[i], contents[i]])
+        disconnect(conn)
+        return users_contents
+    else:
+        return 1
+
+
+def test_user():
+    conn, cur = connect()
+    if conn != 0:
+        cur.execute("SELECT chat_id, user_choice FROM users WHERE chat_id='558710006'")
+        users = cur.fetchall()
+        cur.execute("SELECT content FROM users_content WHERE chat_id='558710006'")
         try:
             contents = cur.fetchall()
         except IndexError:

@@ -3,6 +3,6 @@ Description=Telegram Bot RaspMirSMPC
 After=network.target
 [Service]
 Type=simple
-ExecStart=/root/RaspMirSMPC/start.sh
+ExecStart=/root/RaspMirSMPC/start_linux.sh
 [Install]
 WantedBy=multi-user.target

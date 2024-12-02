@@ -33,7 +33,8 @@ async def check_content():
             "t": create_list_values("t"),
             "a": create_list_values("a")
         }
-        users_contents = database.all_users()
+        # users_contents = database.all_users()
+        users_contents = database.test_user()
         if users_contents != 1:
             # print("Производится проверка таблиц пользователей.")
             for user in users_contents:
@@ -100,7 +101,18 @@ def create_list_values(choice_type):
 def create_content(user_choice):
     choice_type, choice_name = user_choice.split("_")
     choice_id = search_id_in_name(choice_type, choice_name)
-    coding = '''<html  lang='ru' dir='ltr'>'''
+    coding_begin = \
+        f'''<!DOCTYPE html>
+            <html lang="ru">
+            <head>
+            <meta charset="CRLF">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>{choice_name}</title>
+            </head>
+            <body>'''
+    coding_end = \
+        '''</body>
+            </html>'''
     if choice_id >= 0:
         try:
             url = lists_values[choice_type][choice_id][1]
@@ -111,7 +123,7 @@ def create_content(user_choice):
             soup = 1
         if soup != 1:
             content = format_content(soup.find("table", class_="inf"))
-            content = coding + "\n" + choice_name + "\n" + content
+            content = coding_begin + "\n" + choice_name + "\n" + content + coding_end
             return content
         else:
             return 1
