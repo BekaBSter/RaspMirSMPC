@@ -105,7 +105,7 @@ def create_content(user_choice):
         f'''<!DOCTYPE html>
             <html lang="ru">
             <head>
-            <meta charset="CRLF">
+            <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>{choice_name}</title>
             </head>
