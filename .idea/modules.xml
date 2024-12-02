@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Telebot New.iml" filepath="$PROJECT_DIR$/.idea/Telebot New.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/RaspMirSMPC.iml" filepath="$PROJECT_DIR$/.idea/RaspMirSMPC.iml" />
     </modules>
   </component>
 </project>

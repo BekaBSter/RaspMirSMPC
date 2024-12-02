@@ -4,15 +4,17 @@ import mariadb
 
 import http_requests
 
+import DATA
+
 
 def connect():
     try:
         conn = mariadb.connect(
-            user="root",
-            password="Fuck1234",
-            host="localhost",
-            port=3306,
-            database="bot"
+            user=DATA.db_user,
+            password=DATA.db_password,
+            host=DATA.db_host,
+            port=DATA.db_port,
+            database=DATA.db_database
         )
         cur = conn.cursor()
     except mariadb.Error as e:
