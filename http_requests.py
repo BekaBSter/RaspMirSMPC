@@ -34,8 +34,8 @@ async def check_content():
             "t": create_list_values("t"),
             "a": create_list_values("a")
         }
-        # users_contents = database.all_users()
-        users_contents = database.test_user()
+        users_contents = database.all_users()
+        # users_contents = database.test_user()
         if users_contents != 1:
             # print("Производится проверка таблиц пользователей.")
             for user in users_contents:
