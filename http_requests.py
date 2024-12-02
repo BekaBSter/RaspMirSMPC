@@ -146,13 +146,6 @@ def format_content(raw_content):
     return ready_content
 
 
-def create_file_from_content(chat_id, content):
-    file_name_test = f"files/{chat_id}_test.html"
-    with open(file_name_test, "w") as file:
-        file.write(str(content))
-    return file_name_test
-
-
 def check_time_in_site(prev_time=0):
     soup = create_soup(default_url + "cp.htm")
     if soup != 1:

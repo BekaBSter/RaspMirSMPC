@@ -5,6 +5,7 @@ from telebot.asyncio_helper import ApiTelegramException
 import database
 import http_requests
 import Settings
+from htmltopng import html_to_png
 
 bot = AsyncTeleBot(Settings.bot_TOKEN)
 
@@ -221,12 +222,13 @@ async def first_test(call):
         case "yes":
             _, user_choice = database.search_in_database(chat_id)
             content = http_requests.create_content(user_choice)
-            file_name_test = http_requests.create_file_from_content(chat_id, content)
+            file_name_test = f"./files/{chat_id}_test.png"
+            html_to_png(content, file_name_test)
             await bot.send_message(chat_id, f"Текущее расписание:")
             await bot.send_document(
                 chat_id,
                 document=open(file_name_test, "rb"),
-                visible_file_name="Текущее расписание.html"
+                visible_file_name="Текущее расписание.png"
             )
         case "no":
             pass
