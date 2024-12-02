@@ -71,10 +71,10 @@ async def send_message(chat_id, user_choice, file_name_last, file_name_differenc
                                f"Внимание! Изменение расписания для:\n{choices[choice_type]}, {value_choice}\n")
         await bot.send_document(chat_id,
                                 document=open(file_name_last, "rb"),
-                                visible_file_name="Старое расписание.html")
+                                visible_file_name="Старое расписание.png")
         await bot.send_document(chat_id,
                                 document=open(file_name_differences, "rb"),
-                                visible_file_name="Изменения расписания.html")
+                                visible_file_name="Изменения расписания.png")
         database.rewrite_content_user(chat_id, new_content)
         print(f"Пользователю {chat_id} было выслано сообщение без ошибок.\nРабота продолжается")
     except ApiTelegramException as err:
