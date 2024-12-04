@@ -1,7 +1,9 @@
-db_user = ""
-db_password = ""
-db_host = ""
-db_port = 3306
-db_database = ""
+DB_USER = ""
+DB_PASSWORD = ""
+DB_HOST = ""
+DB_PORT = 3306
+DB_DATABASE = ""
 
-bot_TOKEN = ""
+BOT_TOKEN = ""
+
+DEBUG
