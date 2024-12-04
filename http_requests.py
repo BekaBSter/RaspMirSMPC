@@ -6,6 +6,8 @@ import bot
 import database
 from htmltopng import html_to_png
 
+from Settings import DEBUG
+
 import os
 
 urls = {
@@ -114,8 +116,7 @@ def create_content(user_choice):
             url = lists_values[choice_type][choice_id][1]
             soup = create_soup(url)
         except IndexError as err:
-            err = f"{err}. Работа продолжается"
-            print(err)
+            print(f"{err}. Работа продолжается")
             soup = 1
         if soup != 1:
             content = format_content(soup.find("table", class_="inf"))
@@ -176,13 +177,15 @@ def check_differences_content(last_content, new_content):
     yellow_color = '''style="background-color: #f4d35e'''
     red_color = '''style="background-color: #ff477e'''
     if len(last_content) == len(new_content):
-        print("last equal new")
+        if DEBUG:
+            print("last equal new")
         for i in range(0, len(last_content)):
             if last_content[i] != new_content[i]:
                 new_content[i] = new_content[i].replace(yellow_color, red_color)
             difference_content = difference_content + "\n" + new_content[i]
     else:
-        print("last not equal new")
+        if DEBUG:
+            print("last not equal new")
         for i in range(0, min(len(last_content), len(new_content))):
             if last_content[i] != new_content[i]:
                 new_content[i] = new_content[i].replace(yellow_color, red_color)

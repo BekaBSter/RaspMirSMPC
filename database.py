@@ -4,17 +4,17 @@ import mariadb
 
 import http_requests
 
-import Settings
+from Settings import DB_USER, DB_PORT, DB_HOST, DB_DATABASE, DB_PASSWORD, DEBUG
 
 
 def connect():
     try:
         conn = mariadb.connect(
-            user=Settings.db_user,
-            password=Settings.db_password,
-            host=Settings.db_host,
-            port=Settings.db_port,
-            database=Settings.db_database
+            user=DB_USER,
+            password=DB_PASSWORD,
+            host=DB_HOST,
+            port=DB_PORT,
+            database=DB_DATABASE
         )
         cur = conn.cursor()
     except mariadb.Error as e:
