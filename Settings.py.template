@@ -6,4 +6,4 @@ DB_DATABASE = ""
 
 BOT_TOKEN = ""
 
-DEBUG
+DEBUG = True

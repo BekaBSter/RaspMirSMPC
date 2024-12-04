@@ -10,36 +10,41 @@ from Settings import DEBUG
 
 import os
 
+# Ссылки для вывода списка групп, преподавателей и аудиторий
 urls = {
     "g": "https://rasp.mirsmpc.ru/cg.htm",
     "t": "https://rasp.mirsmpc.ru/cp.htm",
     "a": "https://rasp.mirsmpc.ru/ca.htm"
 }
 
+# Указание на присутствие необходимых классов тегов html в типе
 lessons_type = {
     "g": ["Журнал занятий", "Расписание аудитории", "Расписание преподавателя"],
     "t": ["Расписание группы", "Расписание аудитории", "Журнал занятий"],
     "a": ["Расписание преподавателя", "Расписание группы", "Журнал занятий"]
 }
 
+# Корневая ссылка
 default_url = "https://rasp.mirsmpc.ru/"
 
-last_time = 0
+# Глобальная переменная для составления списков в каждой итерации
 lists_values = {}
 
 
+# Главная функция запуска проверки по контенту у пользователей
 async def check_content():
     global lists_values
     while True:
+        # Составление списков
         lists_values = {
             "g": create_list_values("g"),
             "t": create_list_values("t"),
             "a": create_list_values("a")
         }
+        # Взятие контента пользователей из базы данных
         users_contents = database.all_users()
         # users_contents = database.test_user()
         if users_contents != 1:
-            # print("Производится проверка таблиц пользователей.")
             for user in users_contents:
                 chat_id = user[0][0]
                 user_choice = user[0][1]
@@ -66,11 +71,10 @@ async def check_content():
                         err = f"Пользователю {chat_id} не было выслано новое расписание по какой-то " \
                               f"ошибке.\nРабота продолжается"
                         print(err)
-                        # await bot.send_admin_message(err)
-            # print("Проверка пользователей окончена.")
         await asyncio.sleep(120)
 
 
+# Парсинг страницы по URL
 def create_soup(url):
     try:
         page = requests.get(url)
@@ -83,6 +87,7 @@ def create_soup(url):
         return 1
 
 
+# Функция создания списка по типу
 def create_list_values(choice_type):
     url = urls[choice_type]
     soup = create_soup(url)
@@ -96,6 +101,7 @@ def create_list_values(choice_type):
         return 1
 
 
+# Создание контента по выбору пользователя и рефакторинг к стандарту
 def create_content(user_choice):
     choice_type, choice_name = user_choice.split("_")
     choice_id = search_id_in_name(choice_type, choice_name)
@@ -128,6 +134,7 @@ def create_content(user_choice):
         return 1
 
 
+# Форматирование контента из стандартного в полноценный
 def format_content(raw_content):
     table_begin = '<table border="0" cellspacing="1" class="inf" width="100%">\n'
     table_end = '</table>'

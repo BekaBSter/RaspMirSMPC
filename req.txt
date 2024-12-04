@@ -8,12 +8,14 @@ certifi==2024.8.30
 charset-normalizer==3.4.0
 frozenlist==1.5.0
 idna==3.10
+imgkit==1.2.3
 mariadb==1.1.11
 multidict==6.1.0
 packaging==24.2
 propcache==0.2.1
 pyTelegramBotAPI==4.24.0
 requests==2.32.3
+six==1.16.0
 soupsieve==2.6
 telebot==0.0.5
 typing_extensions==4.12.2
