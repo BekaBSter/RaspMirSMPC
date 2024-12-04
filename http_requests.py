@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup as BS
 
 import bot
 import database
+from htmltopng import html_to_png
 
 import os
 
@@ -42,9 +43,8 @@ async def check_content():
                 user_choice = user[0][1]
                 new_content = str(create_content(user_choice))
                 last_content = str(user[1][0])
-                file_name_last = f"files/{chat_id}_last.html"
-                file_name_new = f"files/{chat_id}_new.html"
-                file_name_differences = f"files/{chat_id}_differences.html"
+                file_name_last = f"files/{chat_id}_last.png"
+                file_name_differences = f"files/{chat_id}_differences.png"
                 if new_content == "1":
                     err = "Ошибка: контент равен 1.\nРабота продолжается."
                     print(err)
@@ -52,16 +52,12 @@ async def check_content():
                     users_contents.remove(user)
                     try:
                         os.remove(file_name_last)
-                        os.remove(file_name_new)
                         os.remove(file_name_differences)
                     except FileNotFoundError:
                         print(f"Нет файла у пользователя {chat_id}.\nРабота продолжается")
-                    with open(file_name_differences, "w") as file_differences:
-                        file_differences.write(check_differences_content(last_content, new_content))
-                    with open(file_name_last, "w") as file_last:
-                        file_last.write(last_content)
-                    with open(file_name_new, "w") as file_new:
-                        file_new.write(new_content)
+                    diff = check_differences_content(last_content, new_content)
+                    html_to_png(diff, file_name_differences)
+                    html_to_png(last_content, file_name_last)
                     try:
                         await bot.send_message(chat_id, user_choice, file_name_last, file_name_differences, new_content)
                     except():
@@ -148,13 +144,6 @@ def format_content(raw_content):
         formatted_rows.append(row_str)
     ready_content = table_begin + "\n".join(formatted_rows) + "\n" + table_end
     return ready_content
-
-
-def create_file_from_content(chat_id, content):
-    file_name_test = f"files/{chat_id}_test.html"
-    with open(file_name_test, "w") as file:
-        file.write(str(content))
-    return file_name_test
 
 
 def check_time_in_site(prev_time=0):

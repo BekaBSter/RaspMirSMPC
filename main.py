@@ -7,11 +7,14 @@ from pathlib import Path
 
 async def main():
     await asyncio.gather(
-        bot.polling(),
+        bot.polling(none_stop=True, request_timeout=300),
         check_content()
     )
 
 
 if __name__ == "__main__":
     Path("./files").mkdir(parents=True, exist_ok=True)
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt as e:
+        print("Остановка бота")
