@@ -71,7 +71,7 @@ async def check_content():
                         err = f"Пользователю {chat_id} не было выслано новое расписание по какой-то " \
                               f"ошибке.\nРабота продолжается"
                         print(err)
-        await asyncio.sleep(120)
+        await asyncio.sleep(60)
 
 
 # Парсинг страницы по URL
