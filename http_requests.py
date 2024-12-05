@@ -186,18 +186,24 @@ def check_differences_content(last_content, new_content):
     if len(last_content) == len(new_content):
         if DEBUG:
             print("last equal new")
-        for i in range(0, len(last_content)):
-            if last_content[i] != new_content[i]:
-                new_content[i] = new_content[i].replace(yellow_color, red_color)
-            difference_content = difference_content + "\n" + new_content[i]
+        try:
+            for i in range(0, len(last_content)):
+                if last_content[i] != new_content[i]:
+                    new_content[i] = new_content[i].replace(yellow_color, red_color)
+                difference_content = difference_content + "\n" + new_content[i]
+        except IndexError as e:
+            print(f"Ошибка: ошибка индексов {e}. Работа продолжается")
     else:
         if DEBUG:
             print("last not equal new")
-        for i in range(0, min(len(last_content), len(new_content))):
-            if last_content[i] != new_content[i]:
+        try:
+            for i in range(0, min(len(last_content), len(new_content))):
+                if last_content[i] != new_content[i]:
+                    new_content[i] = new_content[i].replace(yellow_color, red_color)
+                difference_content = difference_content + "\n" + new_content[i]
+            for i in range(min(len(last_content), len(new_content)), max(len(last_content), len(new_content))):
                 new_content[i] = new_content[i].replace(yellow_color, red_color)
-            difference_content = difference_content + "\n" + new_content[i]
-        for i in range(min(len(last_content), len(new_content)), max(len(last_content), len(new_content))):
-            new_content[i] = new_content[i].replace(yellow_color, red_color)
-            difference_content = difference_content + "\n" + new_content[i]
+                difference_content = difference_content + "\n" + new_content[i]
+        except IndexError as e:
+            print(f"Ошибка: ошибка индексов {e}. Работа продолжается")
     return difference_content
