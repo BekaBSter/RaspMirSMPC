@@ -56,7 +56,6 @@ async def check_content():
                     err = "Ошибка: контент равен 1.\nРабота продолжается."
                     print(err)
                 if new_content != last_content and new_content != "1":
-                    users_contents.remove(user)
                     try:
                         os.remove(file_name_last)
                         os.remove(file_name_differences)
@@ -71,6 +70,7 @@ async def check_content():
                         err = f"Пользователю {chat_id} не было выслано новое расписание по какой-то " \
                               f"ошибке.\nРабота продолжается"
                         print(err)
+                    users_contents.remove(user)
         await asyncio.sleep(60)
 
 
