@@ -4,7 +4,7 @@ import mariadb
 
 import http_requests
 
-from Settings import DB_USER, DB_PORT, DB_HOST, DB_DATABASE, DB_PASSWORD, DEBUG
+from Settings import DB_USER, DB_PORT, DB_HOST, DB_DATABASE, DB_PASSWORD, DEBUG, out
 
 
 def connect():
@@ -17,8 +17,10 @@ def connect():
             database=DB_DATABASE
         )
         cur = conn.cursor()
+        if DEBUG:
+            out("База данных: Успешное подключение к базе данных.", "g")
     except mariadb.Error as e:
-        print(f"Error connecting to MariaDB Platform: {e}")
+        out(f"База данных: Ошибка подключения к БД: {e}!", "r")
         return 0, 0
     return conn, cur
 
@@ -33,7 +35,6 @@ def db_connection(func):
     def wrapper(*args, **kwargs):
         conn, cur = connect()
         if not conn:
-            print("Database connection failed.")
             return None
         try:
             result = func(*args, cur=cur, **kwargs)
@@ -51,9 +52,13 @@ def search_in_database(chat_id, cur):
     if user_choice is None:
         isFind = False
         user_choice = 0
+        if DEBUG:
+            out(f"База данных: Пользователь в базе данных не найден. User_id: {chat_id}", "r")
     else:
         isFind = True
         user_choice = user_choice[0]
+        if DEBUG:
+            out(f"База данных: Пользователь найден в базе данных. User_id", "g")
     return isFind, user_choice
 
 
@@ -66,15 +71,17 @@ def write_new_user(chat_id, user_name, user_choice, cur):
     else:
         user_id = int(max_id) + 1
     time = str(datetime.now())
+    content = str(http_requests.create_content(user_choice))
     cur.execute(
         "INSERT INTO users (id, chat_id, user_name, user_choice, create_date) VALUES (?, ?, ?, ?, ?)",
         (user_id, chat_id, user_name, user_choice, str(time))
     )
-    content = str(http_requests.create_content(user_choice))
     cur.execute(
         "INSERT INTO users_content (id, chat_id, content, time) VALUES (?, ?, ?, ?)",
         (user_id, chat_id, content, time)
     )
+    if DEBUG:
+        out(f"База данных: Успешное создание нового пользователя. User_id: {chat_id}, username: {user_id}", "g")
 
 
 @db_connection
@@ -87,8 +94,10 @@ def rewrite_content_user(chat_id, content, cur):
             """,
             (content, time, chat_id)
         )
-    except mariadb.ProgrammingError as err:
-        print(err)
+        if DEBUG:
+            out(f"База данных: Успешное обновление данных пользователя. User_id: {chat_id}", "g")
+    except mariadb.ProgrammingError as e:
+        out(f"База данных: Ошибка обновления данных пользователя: {e}. User_id: {chat_id}", "r")
 
 
 @db_connection
@@ -96,8 +105,10 @@ def remove_user(chat_id, cur):
     try:
         cur.execute(f"DELETE FROM users WHERE chat_id={chat_id}")
         cur.execute(f"DELETE FROM users_content WHERE chat_id={chat_id}")
-    except mariadb.Error as err:
-        print(f"Error: {err}")
+        if DEBUG:
+            out(f"База данных: Успешное удаление пользователя. User_id: {chat_id}", "g")
+    except mariadb.Error as e:
+        out(f"База данных: Ошибка удаления пользователя: {e}. User_id: {chat_id}", "r")
 
 
 @db_connection
@@ -110,9 +121,11 @@ def all_users(cur):
         users_contents = []
         for i in range(0, len(users)):
             users_contents.append([users[i], contents[i]])
+        if DEBUG:
+            out(f"База данных: Успешное получение данных пользователей.", "g")
         return users_contents
     except IndexError as e:
-        print(f"Ошибка {e}")
+        out(f"База данных: Ошибка получения данных пользователей: {e}.", "r")
         return 1
 
 

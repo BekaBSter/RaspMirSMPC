@@ -4,7 +4,7 @@ from telebot.asyncio_helper import ApiTelegramException
 
 import database
 import http_requests
-from Settings import BOT_TOKEN, DEBUG
+from Settings import BOT_TOKEN, DEBUG, out
 from htmltopng import html_to_png
 
 bot = AsyncTeleBot(BOT_TOKEN)
@@ -78,12 +78,10 @@ async def send_message(chat_id, user_choice, file_name_last, file_name_differenc
                                 visible_file_name="Изменения расписания.png")
         database.rewrite_content_user(chat_id, new_content)
         if DEBUG:
-            print(f"Пользователю {chat_id} было выслано сообщение без ошибок.\nРабота продолжается")
+            out(f"Бот: Пользователю было выслано сообщение без ошибок. User_id = {chat_id}", "g")
     except ApiTelegramException as err:
         if DEBUG:
-            print(f"{err}"
-                  f"\nОшибка: пользователь заблокирован! Пользователь будет удален из базы данных!"
-                  f"\nРабота продолжается")
+            out(f"Бот: Ошибка отправки сообщения пользователю: {e}. Пользователь будет удален из базы данных!", "r")
         database.remove_user(chat_id)
 
 

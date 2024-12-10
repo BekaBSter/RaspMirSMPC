@@ -4,6 +4,8 @@ from bot import bot
 from http_requests import check_content
 from pathlib import Path
 
+from Settings import out
+
 
 async def main():
     await asyncio.gather(
@@ -17,4 +19,4 @@ if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt as e:
-        print("Остановка бота")
+        out("Остановка бота", "r")

@@ -1,11 +1,24 @@
-DB_USER: str # Имя пользователя базы данных MariaDB
-DB_PASSWORD: str # Пароль пользователя базы данных MariaDB
-DB_HOST: str # Адрес хоста базы данных MariaDB
-DB_PORT: int # Порт базы данных MariaDB
-DB_DATABASE: str # Имя базы данных MariaDB
+from datetime import datetime
 
-BOT_TOKEN: str # Токен бота телеграмм
+DB_USER: str = "username"  # Имя пользователя базы данных MariaDB
+DB_PASSWORD: str = "password"  # Пароль пользователя базы данных MariaDB
+DB_HOST: str = "ip_addr"  # Адрес хоста базы данных MariaDB
+DB_PORT: int = 3306  # Порт базы данных MariaDB
+DB_DATABASE: str = "db"  # Имя базы данных MariaDB
 
-DEBUG: bool # Режим отладки
+BOT_TOKEN: str = "TOKEN"  # Токен бота телеграмм
 
-timeout: int # Задержка между проверками расписания
+DEBUG: bool = True  # Режим отладки
+
+timeout: int = 60  # Задержка между проверками расписания
+
+
+# Функция вывода цветного текста в чат
+def out(text, color="b"):
+    colors = {
+        "g": "32",
+        "r": "31",
+        "b": "34"
+    }
+    time = datetime.now()
+    print(f"{time}: \033[{colors[color]}m{text}\033[0m")
