@@ -36,7 +36,7 @@ def db_connection(func):
             print("Database connection failed.")
             return None
         try:
-            result = func(*args, cur=cur, conn=conn, **kwargs)
+            result = func(*args, cur=cur, **kwargs)
         finally:
             disconnect(conn, cur)
         return result
@@ -44,7 +44,7 @@ def db_connection(func):
 
 
 @db_connection
-def search_in_database(chat_id, cur, *args, **kwargs):
+def search_in_database(chat_id, cur):
     QUERY = f"SELECT user_choice FROM users WHERE chat_id = {chat_id}"
     cur.execute(QUERY)
     user_choice = cur.fetchone()
@@ -58,7 +58,7 @@ def search_in_database(chat_id, cur, *args, **kwargs):
 
 
 @db_connection
-def write_new_user(chat_id, user_name, user_choice, cur, *args, **kwargs):
+def write_new_user(chat_id, user_name, user_choice, cur):
     cur.execute(f"SELECT MAX(id) FROM users")
     max_id = cur.fetchone()[0]
     if max_id is None:
@@ -78,7 +78,7 @@ def write_new_user(chat_id, user_name, user_choice, cur, *args, **kwargs):
 
 
 @db_connection
-def rewrite_content_user(chat_id, content, cur, *args, **kwargs):
+def rewrite_content_user(chat_id, content, cur):
     try:
         time = str(datetime.now())
         cur.execute(
@@ -92,7 +92,7 @@ def rewrite_content_user(chat_id, content, cur, *args, **kwargs):
 
 
 @db_connection
-def remove_user(chat_id, cur, *args, **kwargs):
+def remove_user(chat_id, cur):
     try:
         cur.execute(f"DELETE FROM users WHERE chat_id={chat_id}")
         cur.execute(f"DELETE FROM users_content WHERE chat_id={chat_id}")
@@ -101,7 +101,7 @@ def remove_user(chat_id, cur, *args, **kwargs):
 
 
 @db_connection
-def all_users(cur, *args, **kwargs):
+def all_users(cur):
     try:
         cur.execute("SELECT chat_id, user_choice FROM users")
         users = cur.fetchall()
@@ -117,7 +117,7 @@ def all_users(cur, *args, **kwargs):
 
 
 @db_connection
-def test_user(cur, *args, **kwargs):
+def test_user(cur):
     try:
         cur.execute("SELECT chat_id, user_choice FROM users WHERE chat_id='558710006'")
         users = cur.fetchall()
