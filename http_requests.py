@@ -6,7 +6,7 @@ import bot
 import database
 from htmltopng import html_to_png
 
-from Settings import DEBUG
+from Settings import DEBUG, timeout
 
 import os
 
@@ -71,7 +71,7 @@ async def check_content():
                               f"ошибке.\nРабота продолжается"
                         print(err)
                     users_contents.remove(user)
-        await asyncio.sleep(60)
+        await asyncio.sleep(timeout)
 
 
 # Парсинг страницы по URL

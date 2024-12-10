@@ -1,9 +1,11 @@
-DB_USER = ""
-DB_PASSWORD = ""
-DB_HOST = ""
-DB_PORT = 3306
-DB_DATABASE = ""
+DB_USER: str # Имя пользователя базы данных MariaDB
+DB_PASSWORD: str # Пароль пользователя базы данных MariaDB
+DB_HOST: str # Адрес хоста базы данных MariaDB
+DB_PORT: int # Порт базы данных MariaDB
+DB_DATABASE: str # Имя базы данных MariaDB
 
-BOT_TOKEN = ""
+BOT_TOKEN: str # Токен бота телеграмм
 
-DEBUG = True
+DEBUG: bool # Режим отладки
+
+timeout: int # Задержка между проверками расписания
