@@ -6,7 +6,7 @@ import bot
 import database
 from htmltopng import html_to_png
 
-from Settings import DEBUG, timeout
+from Settings import DEBUG, timeout, out
 
 import os
 
@@ -53,23 +53,15 @@ async def check_content():
                 file_name_last = f"files/{chat_id}_last.png"
                 file_name_differences = f"files/{chat_id}_differences.png"
                 if new_content == "1":
-                    err = "Ошибка: контент равен 1.\nРабота продолжается."
-                    print(err)
+                    out(f"Парсинг: Ошибка: запрос с сайта был неудачным.", "r")
                 if new_content != last_content and new_content != "1":
-                    try:
-                        os.remove(file_name_last)
-                        os.remove(file_name_differences)
-                    except FileNotFoundError:
-                        print(f"Нет файла у пользователя {chat_id}.\nРабота продолжается")
                     diff = check_differences_content(last_content, new_content)
                     html_to_png(diff, file_name_differences)
                     html_to_png(last_content, file_name_last)
                     try:
                         await bot.send_message(chat_id, user_choice, file_name_last, file_name_differences, new_content)
                     except():
-                        err = f"Пользователю {chat_id} не было выслано новое расписание по какой-то " \
-                              f"ошибке.\nРабота продолжается"
-                        print(err)
+                        out(f"Парсинг: Пользователю {chat_id} не было выслано новое расписание по какой-то ошибке.", "r")
                     users_contents.remove(user)
         await asyncio.sleep(timeout)
 
@@ -82,8 +74,7 @@ def create_soup(url):
         soup = BS(page.text, "html.parser")
         return soup
     except requests.exceptions.ConnectionError as err:
-        err = f"Ошибка при запросе страницы: {err}.\nРабота продолжается."
-        print(err)
+        out(f"Парсинг: Ошибка при запросе страницы: {err}.\nРабота продолжается.", "r")
         return 1
 
 
@@ -121,8 +112,8 @@ def create_content(user_choice):
         try:
             url = lists_values[choice_type][choice_id][1]
             soup = create_soup(url)
-        except IndexError as err:
-            print(f"{err}. Работа продолжается")
+        except IndexError as e:
+            out(f"Парсинг: Ошибка создания контента: {e}.", "r")
             soup = 1
         if soup != 1:
             content = format_content(soup.find("table", class_="inf"))
@@ -185,17 +176,17 @@ def check_differences_content(last_content, new_content):
     red_color = '''style="background-color: #ff477e'''
     if len(last_content) == len(new_content):
         if DEBUG:
-            print("last equal new")
+            out("Парсинг: Размер старого и нового расписаний одинаковый.", "g")
         try:
             for i in range(0, len(last_content)):
                 if last_content[i] != new_content[i]:
                     new_content[i] = new_content[i].replace(yellow_color, red_color)
                 difference_content = difference_content + "\n" + new_content[i]
-        except IndexError as e:
-            print(f"Ошибка: ошибка индексов {e}. Работа продолжается")
+        except Exception as e:
+            out(f"Парсинг: Ошибка индексов: {e}.", "r")
     else:
         if DEBUG:
-            print("last not equal new")
+            out("Парсинг: Размер старого и нового расписаний разный.", "g")
         try:
             for i in range(0, min(len(last_content), len(new_content))):
                 if last_content[i] != new_content[i]:
@@ -204,6 +195,6 @@ def check_differences_content(last_content, new_content):
             for i in range(min(len(last_content), len(new_content)), max(len(last_content), len(new_content))):
                 new_content[i] = new_content[i].replace(yellow_color, red_color)
                 difference_content = difference_content + "\n" + new_content[i]
-        except IndexError as e:
-            print(f"Ошибка: ошибка индексов {e}. Работа продолжается")
+        except Exception as e:
+            out(f"Парсинг: Ошибка индексов: {e}.", "r")
     return difference_content

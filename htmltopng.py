@@ -1,4 +1,5 @@
 import imgkit
+from Settings import out
 
 
 def html_to_png(html_input, output_path):
@@ -9,6 +10,6 @@ def html_to_png(html_input, output_path):
     }
     try:
         imgkit.from_string(html_input, output_path, options=options)
-        print(f"PNG успешно сохранен в: {output_path}")
+        out(f"Конвертация: PNG успешно сохранен в: {output_path}", "g")
     except Exception as e:
-        print(f"Ошибка при конвертации HTML в PNG: {e}")
+        out(f"Конвертация: Ошибка при конвертации HTML в PNG: {e}", "r")
