@@ -79,7 +79,7 @@ async def send_message(chat_id, user_choice, file_name_last, file_name_differenc
         database.rewrite_content_user(chat_id, new_content)
         if DEBUG:
             out(f"Бот: Пользователю было выслано сообщение без ошибок. User_id = {chat_id}", "g")
-    except ApiTelegramException as err:
+    except ApiTelegramException as e:
         if DEBUG:
             out(f"Бот: Ошибка отправки сообщения пользователю: {e}. Пользователь будет удален из базы данных!", "r")
         database.remove_user(chat_id)
